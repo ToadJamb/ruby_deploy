@@ -75,9 +75,6 @@ class Deploy
 		'./'
 	]
 
-	@params       # Command line parameters.
-	@project_root # The root folder for the deployment.
-
 	############################################################################
 	#                                initialize                                #
 	############################################################################
@@ -443,5 +440,7 @@ class Deploy
 	end
 end
 
-dep = Deploy.new(ARGV)
-dep.deploy()
+unless ARGV.count > 0 and File.exists?(ARGV[0])
+	dep = Deploy.new(ARGV)
+	dep.deploy()
+end

@@ -1,0 +1,10 @@
+require 'rake'
+require 'rake/testtask'
+
+task :default => [:tests]
+
+Rake::TestTask.new('tests') do |task|
+  task.pattern = 'test/*_test.rb'
+  task.verbose = true
+  task.warning = true
+end

@@ -52,10 +52,9 @@ Test::Unit::TestCase.class_eval do
     super
 
     @obj = nil
-    @stack_trace = []
-    @trace = []
 
     reset_io
+    reset_trace
 
     # This block ensures that tests still work if there is not a class that
     # corresponds with the test file/class.
@@ -131,7 +130,6 @@ Test::Unit::TestCase.class_eval do
   # as well without calling super.
   def teardown
     set_trace_func nil
-    reset_trace
   end
 
   ############################################################################

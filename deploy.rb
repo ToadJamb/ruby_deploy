@@ -101,7 +101,7 @@ class Deploy
 
   # The help text to be displayed when someone uses the -h or --help flags.
   HELP_TEXT =<<EOT
-#{self.name} [OPTIONS]
+#{self.name}.rb [OPTIONS]
 
 Deploys the code in the current directory to the specified location.
 
@@ -118,10 +118,8 @@ Deploys the code in the current directory to the specified location.
 
     2. By default, local deployments are not tagged in source control.
        Remote deployments will be.  Either (or both) of these may be
-       turned on/off by using do-tag or no-tag in the appropriate config file.
-       However, do-tag will require local deployments to have the code
-       committed and no-tag will not allow remote pushes without
-       all code committed.
+       turned on/off by using tag-it in the appropriate config file.
+       tag-it will require that all code is committed before deploying.
 
   NOTE: All options are case sensitive!
 

@@ -98,13 +98,13 @@ Test::Unit::TestCase.class_eval do
           @class.new([]).instance_variables)
       }
 
-      # If initializing the class in the line above kills the app,
-      # we need to set it back to running.
-      reset_app_state
-
       # Indicate that this code has been run.
       @@initialized = true
     end
+
+    # If initializing the class with @class.new above kills the app,
+    # we need to set it back to running, but we want to do this regardless.
+    reset_app_state
   end
 
   # Sets up functionality for all tests.

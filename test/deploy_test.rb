@@ -523,6 +523,7 @@ class DeployTest < Test::Unit::TestCase
   def create(*args)
     reset_io
     reset_trace
+    reset_app_state
     wrap_output { @obj = @class.new(args) }
   end
 

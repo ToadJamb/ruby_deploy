@@ -61,13 +61,13 @@ class Deploy
   # Simple class that holds the version information.
   class Version
     # Major build number.
-    MAJOR = 0
+    MAJOR = 1
 
     # Minor build number.
     MINOR = 0
 
     # Build number.
-    REVISION = 3
+    REVISION = 0
 
     # Convert it to a nice string 'automagically'.
     def self.to_s

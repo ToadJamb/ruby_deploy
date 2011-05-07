@@ -514,7 +514,7 @@ EOT
   def hg_tag(options)
     puts MESSAGES[:tagging] % @hg_id
     run_hg "branch #{options[:branch]} --force" if options[:branch]
-    run_hg "tag #{options[:tag]} #{get_date} --force"
+    run_hg "tag \"#{options[:tag]} #{get_date}\" --force"
     run_hg "update #{@hg_id} --clean" if options[:branch]
   end
 

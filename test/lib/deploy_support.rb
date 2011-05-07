@@ -404,9 +404,7 @@ options:
         return true, "marked working directory as branch #{branch}"
 
       # hg tag
-      when /^hg tag \w+ \d{4}-\d\d-\d\d \d\d-\d\d-\d\d --force$/
-        tag = command.gsub(
-          /^hg tag | \d{4}-\d\d-\d\d \d\d-\d\d-\d\d --force$/, '')
+      when /^hg tag "\w+ \d{4}-\d\d-\d\d \d\d-\d\d-\d\d" --force$/
         return true, ''
 
       # hg update

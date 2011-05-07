@@ -308,7 +308,8 @@ class DeployTest < Test::Unit::TestCase
         assert_trace_args function(:hg), "update #{HG_ID} --clean"
       end
 
-      assert_trace_args function(:hg), "tag #{options[:tag]} #{tag_date} --force"
+      assert_trace_args function(:hg),
+        "tag \"#{options[:tag]} #{tag_date}\" --force"
     end
   end
 
@@ -411,7 +412,8 @@ class DeployTest < Test::Unit::TestCase
 
     options = config_options(argv[1])
 
-    assert_trace_args function(:hg), "tag #{options[:tag]} #{tag_date} --force"
+    assert_trace_args function(:hg),
+      "tag \"#{options[:tag]} #{tag_date}\" --force"
   end
 
   def test_specified_branch_name

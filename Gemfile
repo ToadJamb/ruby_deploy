@@ -8,5 +8,5 @@ gem 'highline', '~>1.6.1',   :group => [:default, :rake],
   :require => 'highline/import'
 
 group :rake do
-	gem 'rake', '0.8.7'
+  gem 'rake', '0.8.7'
 end

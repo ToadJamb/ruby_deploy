@@ -35,6 +35,12 @@ require File.join(File.dirname(File.expand_path(__FILE__)), 'requires')
 class DeployTest < Test::Unit::TestCase
   include DeployResult
 
+  def initialize(*args)
+    init_object(flag(:help)[0])
+    expose_stack
+    super
+  end
+
   def setup
     super
     set_project project(:good)

@@ -108,7 +108,7 @@ class Deploy
 
   # Override to prevent being called when the application is dead.
   def trollop_die(*args)
-    orig_trollop_die(*args) if ApplicationState.alive
+    orig_trollop_die(*args) if TestInternals::AppState.alive
   end
 
   # Get the contents of the config file and send it on.

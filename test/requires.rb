@@ -31,18 +31,14 @@
 #++
 
 require 'bundler'
-Bundler.require(:test)
+Bundler.require :test
 require 'test/unit'
 require 'stringio'
-require File.join(File.dirname(__FILE__), '..', 'lib', 'script_env')
-ScriptEnv.testing = true
+
 require File.join(File.dirname(__FILE__), '..', 'deploy')
 require File.join(File.dirname(__FILE__), 'lib', 'deploy_support')
 require File.join(File.dirname(__FILE__), 'lib', 'deploy_result')
 require File.join(File.dirname(__FILE__), 'lib', 'build_config')
 require File.join(File.dirname(__FILE__), 'lib', 'deploy')
-require File.join(File.dirname(__FILE__), 'lib', 'test_case')
-require File.join(File.dirname(__FILE__), 'lib', 'application_state')
-require File.join(File.dirname(__FILE__), 'lib', 'kernel')
 require File.join(File.dirname(__FILE__), 'lib', 'rsync')
 require File.join(File.dirname(__FILE__), 'lib', 'db_yaml')

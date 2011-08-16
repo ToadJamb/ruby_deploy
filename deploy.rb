@@ -34,12 +34,16 @@
 ################################################################################
 #++
 
+require 'app_mode'
+puts AppMode.state unless AppMode.production
+
 requirements = Dir[File.join(File.dirname(__FILE__), 'lib', '**.rb')]
 requirements.each do |file|
   require file
 end
 
-unless ScriptEnv.testing
+unless AppMode.test
+  require 'test_internals'
   require 'open4'
   require 'trollop'
   require 'net/ssh'
@@ -456,14 +460,14 @@ EOT
   # ==== Examples
   #  format_date(2001, 1, 1, 23, 59, 29) #=> '2001-01-01 23-59-29'
   def format_date(date_time)
-		'%d-%s-%s %s-%s-%s' % [
-			date_time.year,
-			date_time.month.to_s.rjust(2, '0'),
-			date_time.day.to_s.rjust(2, '0'),
-			date_time.hour.to_s.rjust(2, '0'),
-			date_time.minute.to_s.rjust(2, '0'),
-			date_time.second.to_s.rjust(2, '0')
-		]
+    '%d-%s-%s %s-%s-%s' % [
+      date_time.year,
+      date_time.month.to_s.rjust(2, '0'),
+      date_time.day.to_s.rjust(2, '0'),
+      date_time.hour.to_s.rjust(2, '0'),
+      date_time.minute.to_s.rjust(2, '0'),
+      date_time.second.to_s.rjust(2, '0')
+    ]
   end
 
   # Returns a formatted date and time.
@@ -538,7 +542,7 @@ EOT
     end
 
     trollop_die :dest, MESSAGES[:dest_missing] unless
-      @options && @options[:dest]
+      @options.is_a?(Hash) && @options[:dest]
   end
 
   # Executes an hg command using the shell.
@@ -826,7 +830,7 @@ EOT
   end
 end
 
-unless ScriptEnv.testing
+unless AppMode.test
   dep = Deploy.new(ARGV)
   dep.deploy()
 end

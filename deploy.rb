@@ -43,7 +43,6 @@ requirements.each do |file|
 end
 
 unless AppMode.test
-  require 'test_internals'
   require 'open4'
   require 'trollop'
   require 'net/ssh'
@@ -71,7 +70,7 @@ class Deploy
     MINOR = 0
 
     # Build number.
-    REVISION = 1
+    REVISION = 2
 
     # Convert it to a nice string 'automagically'.
     def self.to_s
@@ -761,7 +760,7 @@ EOT
       success, out = run_ssh(config_options, "ls #{check_path}")
 
       unless success
-        warn get_message(:bad_ssh, 
+        warn get_message(:bad_ssh,
           config_options[:user], config_options[:server], check_path, file)
         return
       end
@@ -798,7 +797,7 @@ EOT
     @options[:dest].each do |config|
       config = File.join(SETTINGS[:config_path], config)
       unless valid_file?(config)
-        warn get_message(:no_config, config) 
+        warn get_message(:no_config, config)
         return
       end
     end

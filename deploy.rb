@@ -70,7 +70,7 @@ class Deploy
     MINOR = 0
 
     # Build number.
-    REVISION = 2
+    REVISION = 3
 
     # Convert it to a nice string 'automagically'.
     def self.to_s

@@ -1,7 +1,3 @@
-require 'bundler'
-Bundler.require(:rake)
-require 'rake/clean'
-
 desc 'Generate sample ssh output.'
 file 'ssh_sample.txt', :user_name, :server do |file, args|
   user = args[:user_name]

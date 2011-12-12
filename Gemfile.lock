@@ -1,26 +1,21 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    app_mode (1.0.1)
-    highline (1.6.1)
-    net-ssh (2.1.0)
+    app_mode (1.0.3)
+    highline (1.6.8)
+    net-ssh (2.1.4)
     open4 (1.0.1)
-    rake (0.8.7)
-    rake_tasks (0.0.4)
-      rake (~> 0.8.7)
-    test_internals (1.0.0)
-      app_mode (~> 1.0.0)
+    test_internals (2.0.2)
+      app_mode (~> 1.0.3)
     trollop (1.16.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  app_mode (~> 1.0.0)
+  app_mode (~> 1.0.3)
   highline (~> 1.6.1)
   net-ssh (~> 2.1.0)
   open4 (~> 1.0.1)
-  rake (= 0.8.7)
-  rake_tasks (~> 0.0.1)
-  test_internals (~> 1.0.0)
+  test_internals (~> 2.0.2)
   trollop (~> 1.16.2)

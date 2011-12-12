@@ -1,2 +1,5 @@
-require 'bundler'
-Bundler.require :rake
+require 'net/ssh'
+require 'highline'
+require 'open4'
+require 'rake_tasks'
+require 'rake/clean'

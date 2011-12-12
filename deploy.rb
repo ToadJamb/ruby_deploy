@@ -70,7 +70,7 @@ class Deploy
     MINOR = 0
 
     # Build number.
-    REVISION = 3
+    REVISION = 4
 
     # Convert it to a nice string 'automagically'.
     def self.to_s
@@ -240,16 +240,33 @@ EOT
 
     # Output the final status of each deployment.
     puts "\nFinal status:"
+
+    log_text = [] << '-' * 80
+    log_text << Time.now
+
     @config_options.each do |options|
       pattern = '%s'
 
       case options[:status]
         when :success
+          log_text << '-' * 80
+          log_text << 'changeset   : ' + @hg_id +
+            (@hg_status.empty? ? '' : ' (' + @hg_status.gsub("\n", ' / ') + ')')
+          log_text << 'user        : ' + ENV['USERNAME']
+          log_text << 'machine     : ' + `hostname`.chomp
+          log_text << 'location    : ' + options[:full_path]
+          log_text << 'environment : ' + options[:environment]
           pattern = '=> %s'
         when :cancel
           pattern = '=/ %s'
         when :fail
           pattern = '=| %s'
+      end
+
+      if log_text.size > 3
+        File.open('.deploy', 'a') do |f|
+          f.write log_text.join("\n") + "\n"
+        end
       end
 
       puts pattern % options[:full_path]
